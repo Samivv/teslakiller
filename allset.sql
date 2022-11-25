@@ -8,53 +8,32 @@ insert into category (category_name) VALUES ('Model');
 insert into category (category_name) values ('Color');
 insert into category (category_name) values ('Interior');
 
-CREATE TABLE model
-(model_id INTEGER PRIMARY KEY,
-model_name VARCHAR(10) NOT NULL,
-model_price DECIMAL(7,2),
-category_id INT,
-FOREIGN KEY (category_id) REFERENCES category (category_id)
-);
+insert into client (client_name, address, zipcode, city, phone, email) values ('Testi Tenho', 'Testikuja 1 A2', 20000, 'Testitown', '0412345678', 'testi.testi@testi.testi');
 
-CREATE TABLE color
-(color_id INTEGER PRIMARY KEY,
-color_name VARCHAR(10) NOT NULL,
-color_price DECIMAL(7,2),
-category_id INT,
-FOREIGN KEY (category_id) REFERENCES category (category_id)
-);
-
-CREATE TABLE interior
-(interior_id INTEGER PRIMARY KEY,
-interior_name VARCHAR(10) NOT NULL,
-interior_price DECIMAL(7,2),
+CREATE TABLE product
+(product_id INTEGER PRIMARY KEY,
+product_name VARCHAR(10) NOT NULL,
+product_price DECIMAL(10,2),
 category_id INT,
 FOREIGN KEY (category_id) REFERENCES category (category_id)
 );
 
 CREATE TABLE orders
 (order_id INTEGER PRIMARY KEY,
-client_id INTEGER,
-model_id INTEGER,
-color_id INTEGER,
-interior_id INTEGER,
 order_date DATE NOT NULL,
 order_time TIME NOT NULL,
+order_price DECIMAL (10,2),
+client_id INTEGER,
+product_id INTEGER,
     FOREIGN KEY (client_id) REFERENCES client (client_id),
-    FOREIGN KEY (model_id) REFERENCES model (model_id),
-    FOREIGN KEY (color_id) REFERENCES color (color_id),
-    FOREIGN KEY (interior_id) REFERENCES interior (interior_id)
+    FOREIGN KEY (product_id) REFERENCES product (product_id)
 );
 
-insert into model (model_name, model_price, category_id) values ('Basic', 50000, 1);
-insert into model (model_name, model_price, category_id) values ('Sport', 78000, 1);
-insert into model (model_name, model_price, category_id) values ('Offroad', 66000, 1);
-
-insert into color (color_name, color_price, category_id) values ('Black', 1500, 2);
-insert into color (color_name, color_price, category_id) values ('White', 0, 2);
-insert into color (color_name, color_price, category_id) values ('Red', 1800, 2);
-
-insert into interior (interior_name, interior_price, category_id) values ('Leather', 1400, 3);
-insert into interior (interior_name, interior_price, category_id) values ('Textile', 0, 3);
-
-insert into client (client_name, address, zipcode, city, phone, email) values ('Testi Tenho', 'Testikuja 1 A2', 20000, 'Testitown', '0412345678', 'testi.testi@testi.testi');
+insert into product (product_name, product_price, category_id) values ('Basic', 50000, 1);
+insert into product (product_name, product_price, category_id) values ('Sport', 78000, 1);
+insert into product (product_name, product_price, category_id) values ('Offroad', 66000, 1);
+insert into product (product_name, product_price, category_id) values ('Black', 1000, 2);
+insert into product (product_name, product_price, category_id) values ('White', 0, 2);
+insert into product (product_name, product_price, category_id) values ('Red', 1500, 2);
+insert into product (product_name, product_price, category_id) values ('Leather', 1400, 3);
+insert into product (product_name, product_price, category_id) values ('Textile', 0, 3);
