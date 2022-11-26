@@ -2,7 +2,7 @@
 require '../inc/functions.php';
 require '../inc/headers.php';
 
-// testiksi kaikki tiedot model-taulusta jsonina:
+//Haetaan kaikki tiedot category-taulusta jsonina:
 try {
     $db = createSqliteConnection('../allset.db');
     selectAsJson($db, 'select * from category');
