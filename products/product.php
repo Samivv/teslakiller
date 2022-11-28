@@ -8,7 +8,7 @@ $product_id = $param[1];
 
 try {
   $db = createSqliteConnection('../allset.db');
-  selectAsJson($db, "select * from product where id = $product_id");
+  selectAsJson($db, "select * from product where product_id = $product_id");
 }
 catch (PDOException $pdoex) {
   returnError($pdoex);
