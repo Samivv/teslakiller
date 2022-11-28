@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@500&family=Montserrat:wght@300&family=Roboto:wght@100;500&family=Tiro+Devanagari+Marathi&display=swap');
+/*  font-family: 'IBM Plex Sans Arabic', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Tiro Devanagari Marathi', serif;     
+*/
+/* import TESLA.ttf from /media*/
+
+* {
+    padding:0;
+    margin:0;
+    /* scroll-behavior: smooth;
+    scroll-snap-type: y mandatory; */
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+}
+
+section {
+    background-color: rgb(97, 93, 93);
+    height: 100vh;
+    scroll-snap-align: start;
+}
+
+.logo {
+    display:flex;
+    position: relative;
+    left:0;
+}
+.navbar *{
+    color:rgb(255, 255, 255)!important;
+    z-index: -1!important;
+    /* black outline for text */
+    text-shadow: 0 0 0.2em rgb(0, 0, 0), 0 0 0.2em rgb(0, 0, 0);
+}
+[class="navbar-toggler collapsed"] {
+   /* give the hamburger menu a white outline */
+    box-shadow: 0 0 0.2em rgb(255, 255, 255), 0 0 0.2em rgb(255, 255, 255);
+}
+
+.navbar *:hover {
+    cursor: pointer;
+    color: rgb(255, 255, 255)!important;
+    transition: 0.5s;
+}
+
+
+.cart {
+    overflow: hidden;
+    width: 10vw;
+    height: 15vh;
+    background-color: rgba(0, 0, 0, 0.562);
+    color:white;
+    position:absolute;
+    top: 1vw;
+    right:0.25vw;
+    display:flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.cart:before{
+    content: "Ostoskori";
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+
+}
+.intro,.intro2,.intro3 {
+    background-color: rgba(0, 0, 0, 0.562);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:white;
+}
+
+.intro2 {
+    background-image: url("./media/sport-front.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.showcase {
+    position: absolute;
+    background-image: url("./media/basic.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+    z-index: -1;
+    
+}
+
+.logo {
+        /* background image media/kurkkumopo.jpg */
+        position: absolute;
+        background-image: url("./media/basic.jpeg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100vh;
+        width: 100vw;
+        z-index: -1;
+}
+
+/* generate a down arrow */
+.arrow {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid white;
+    animation: animateDown 1s infinite;
+}
+
+/* .admin {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(136, 135, 135);
+    height: 100vh;
+    scroll-snap-align: start;
+} */
+
+.admin {
+    display:flex;
+    justify-content: center;
+    align-items:center;
+}
