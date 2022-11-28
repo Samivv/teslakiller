@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- admin panel with the ability to add products and product categories  -->
+    <h1>Admin Panel</h1>
+    <h2>Add Product</h2>
+    <form action="addproduct.php" method="post">
+        <label for="productname">Product Name</label>
+        <input type="text" name="productname" id="productname">
+        <label for="productprice">Product Price</label>
+        <input type="text" name="productprice" id="productprice">
+        <label for="productcategory">Product Category</label>
+        <input type="text" name="productcategory" id="productcategory">
+        <input type="submit" value="Add Product">
+    </form>
+    <h2>Add Product Category</h2>
+    <form action="addproductcategory.php" method="post">
+        <label for="productcategory">Product Category</label>
+        <input type="text" name="productcategory" id="productcategory">
+        <input type="submit" value="Add Product Category">
+    </form>
+    
+</body>
+</html>
