@@ -31,10 +31,10 @@ function createSqliteConnection($filename){
     echo json_encode($results);
 } 
 
-/* function executeInsert(object $db, string $sql): int {
+ function executeInsert(object $db, string $sql): int {
     $query = $db->query($sql);
     return $db->lastInsertId();
-} */
+} 
 
  function returnError(PDOException $pdoex): void {
     header('HTTP/1.1 500 Internal Server Error');
