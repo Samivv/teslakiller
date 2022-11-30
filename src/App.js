@@ -1,5 +1,6 @@
 import './App.css';
 import './style.css';
+import './media/fonts/TESLA.ttf';
 import AllsetNavbar from './navbarAllset.js';
 import AdminPanel from './admin';
 
@@ -9,7 +10,7 @@ function App() {
     <>
     <AllsetNavbar/>
     <section className="intro" id="home">
-      <h1>Tässä on<span className="nimi"> Teslakiller</span></h1>
+      <h1>Tässä on<span className="font-face"> Teslakiller</span></h1>
       <div className="logo">
       </div>
       <div className="arrow"></div>
