@@ -37,3 +37,20 @@ insert into product (product_name, product_price, category_id) values ('White', 
 insert into product (product_name, product_price, category_id) values ('Red', 1500, 2);
 insert into product (product_name, product_price, category_id) values ('Leather', 1400, 3);
 insert into product (product_name, product_price, category_id) values ('Textile', 0, 3);
+
+DROP TABLE orders;
+
+CREATE TABLE orders
+(order_id INTEGER PRIMARY KEY,
+order_date DATETIME NOT NULL,
+client_id INTEGER NOT NULL,
+    FOREIGN KEY (client_id) REFERENCES client (client_id)
+);
+CREATE TABLE order_row
+(order_id INTEGER NOT NULL,
+product_id INTEGER NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES orders (order_id),
+    FOREIGN KEY (product_id) REFERENCES product (product_id)
+);
+
+insert into orders (order_date, client_id) values ('2022-11-28', 1);
