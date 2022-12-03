@@ -86,11 +86,32 @@ section {
 }
 
 .intro2 {
-    background-image: url("./media/sport-front.jpeg");
+    background-image: url("./media/basic.jpeg");/*url("./media/sport-front.jpeg");*/
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    text-shadow: 2px 2px 5px black;
 }
+
+.button {
+    background-color: #266df8;  
+    border-radius: 10px;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+  
+.button:hover {
+    background-color: #1f5dd2;
+    color: white;
+}
+
 .showcase {
     position: absolute;
     background-image: url("./media/basic.jpeg");
@@ -100,8 +121,8 @@ section {
     height: 100vh;
     width: 100vw;
     z-index: -1;
-    
 }
+
 
 .logo {
         position: absolute;
