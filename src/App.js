@@ -3,6 +3,7 @@ import './style.css';
 import './media/fonts/TESLA.ttf';
 import AllsetNavbar from './navbarAllset.js';
 import AdminPanel from './admin';
+import Client from './client';
 import { Container } from 'react-bootstrap';
 
 
@@ -52,6 +53,9 @@ function App() {
     </section>
     <section className="admin" id="admin">
     <AdminPanel/>
+    </section>
+    <section className="client" id="client">
+    <Client/>
     </section>
     </>
 
