@@ -39,6 +39,7 @@ insert into product (product_name, product_price, category_id) values ('Leather'
 insert into product (product_name, product_price, category_id) values ('Textile', 0, 3);
 
 DROP TABLE orders;
+DROP TABLE order_row;
 
 CREATE TABLE orders
 (order_id INTEGER PRIMARY KEY,

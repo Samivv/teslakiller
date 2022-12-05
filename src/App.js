@@ -19,24 +19,29 @@ function App() {
     </section>
 
     <section className="intro2">
-      <h2><span className="font-face"> Basic model </span></h2>
-    
+      <h2><span className="font-face"> Build your car </span></h2>
       <form>
-      <label for="color">Choose a color:</label>
-      <select name="color" id="color">
-        <option value="white">White</option>
-        <option value="black">Black</option>
-        <option value="red">Red</option>
-      </select>
+        <label for="model">Choose a model:</label>
+        <select name="model" id="model">
+          <option value="basic">Basic model</option>
+          <option value="sport">Super fast</option>
+          <option value="offroad">Off-road</option>
+        </select>
 
-      <label for="color">Choose a interior:</label>
-      <select name="interior" id="interior">
-        <option value="bleather">Black leather</option>
-        <option value="lleather">White leather</option>
-        <option value="textile">Premium fabric</option>
-      </select>
-      
-      <button className="button">Order</button>
+        <label for="color">Choose a color:</label>
+        <select name="color" id="color">
+          <option value="white">White</option>
+          <option value="black">Black</option>
+          <option value="red">Red</option>
+        </select>
+
+        <label for="color">Choose a interior:</label>
+        <select name="interior" id="interior">
+          <option value="bleather">Black leather</option>
+          <option value="lleather">White leather</option>
+          <option value="textile">Premium fabric</option>
+        </select>
+        <button className="button">Order</button>
       </form>
     </section>
 
