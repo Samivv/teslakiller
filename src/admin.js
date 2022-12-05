@@ -4,13 +4,12 @@ import {Form, Button } from 'react-bootstrap';
 import axios from 'axios';
 
 function AdminPanel() {
-  // add category post request to /products/addcategory.php with data name
   const addCategory = (e) => {
     e.preventDefault();
     const data = {
       name: e.target.name.value
     }
-    axios.post('/products/addcategory.php', data)
+    axios.post('http://localhost:3000/products/addcategory.php', data)
     .then(res => {
       console.log(res);
     })
