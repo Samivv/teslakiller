@@ -25,7 +25,7 @@ function AllsetNavbar() {
             </Nav>
             <Nav className="ml-auto">
                 <Nav.Link href="#basic">Shop</Nav.Link>
-                <Nav.Link href="#sport">Account</Nav.Link>
+                <Nav.Link href="#client">Account</Nav.Link>
                 <Nav.Link href="#admin">Menu</Nav.Link>
             </Nav>
         </Navbar.Collapse>

@@ -21,6 +21,3 @@ $total = $_SESSION['total'];
 // get date from session
 $date = $_SESSION['date'];
 // get time from session
-
-
-
