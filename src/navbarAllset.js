@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
+import './media/fonts/TESLA.ttf';
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
 
 
@@ -14,13 +15,13 @@ function AllsetNavbar() {
               height="30"
               className="d-inline-block align-top"
               alt=""
-            />Allset</Navbar.Brand>
+            /><span className="font-face">ALLSET</span></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mx-auto">
-                <Nav.Link href="#basic">Basic</Nav.Link>
-                <Nav.Link href="#sport">Sport</Nav.Link>
-                <Nav.Link href="#superfast">Superfast</Nav.Link>
+                <Nav.Link href="#basic"><span className="font-face">Basic model</span></Nav.Link>
+                <Nav.Link href="#sport"><span className="font-face">Superfast</span></Nav.Link>
+                <Nav.Link href="#truck"><span className="font-face">Off-road</span></Nav.Link>
             </Nav>
             <Nav className="ml-auto">
                 <Nav.Link href="#basic">Shop</Nav.Link>

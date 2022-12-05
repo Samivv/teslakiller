@@ -5,6 +5,12 @@
     font-family: 'Tiro Devanagari Marathi', serif;     
 */
 /* import TESLA.ttf from /media*/
+@font-face {
+    font-family: "TESLA";
+    src: local("TESLA"),
+     url("./media/fonts/TESLA.ttf") format("truetype");
+    }
+    
 
 * {
     padding:0;
@@ -23,7 +29,7 @@ section {
 .logo {
     display:flex;
     position: relative;
-    left:0;
+    left: 0;
 }
 .navbar *{
     color:rgb(255, 255, 255)!important;
@@ -35,6 +41,11 @@ section {
    /* give the hamburger menu a white outline */
     box-shadow: 0 0 0.2em rgb(255, 255, 255), 0 0 0.2em rgb(255, 255, 255);
 }
+
+[class="d-inline-block align-top"] {
+    margin-left: 10px;
+    margin-right: 10px;
+ }
 
 .navbar *:hover {
     cursor: pointer;
@@ -75,11 +86,42 @@ section {
 }
 
 .intro2 {
-    background-image: url("./media/sport-front.jpeg");
+    background-image: url("./media/sport-back.jpeg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    text-shadow: 2px 2px 5px black;
 }
+
+select {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 14px 18px;
+    border: none;
+    border-radius: 6px;
+    background-color: #f1f1f1;
+}
+
+.button {
+    background-color: #266df8;  
+    border-radius: 6px;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+  
+.button:hover {
+    background-color: #1f5dd2;
+    color: white;
+}
+
 .showcase {
     position: absolute;
     background-image: url("./media/basic.jpeg");
@@ -89,13 +131,12 @@ section {
     height: 100vh;
     width: 100vw;
     z-index: -1;
-    
 }
 
+
 .logo {
-        /* background image media/kurkkumopo.jpg */
         position: absolute;
-        background-image: url("./media/basic.jpeg");
+        background-image: url("./media/truck-side.jpg");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
