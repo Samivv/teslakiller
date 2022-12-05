@@ -11,7 +11,6 @@ function AdminPanel() {
     axios.get('http://localhost:3000/products/getcategories.php')
     .then(res=> {
       setData(res.data);
-      console.log(res.data);
     })
     .catch(err => {
       console.log(err)
