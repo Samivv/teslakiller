@@ -31,7 +31,7 @@ function Client() {
         'Content-Type' : 'application/json'
       }
     }).catch(error => {
-      alert(error.response === undefined ? error : error.response.data.error);
+      alert(error);
     });
   }
 
