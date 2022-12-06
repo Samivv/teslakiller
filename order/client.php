@@ -17,13 +17,17 @@ try{
     $db = createSqliteConnection('../allset.db');
     $db->beginTransaction();
 
-    $sql = "INSERT INTO client (client_name, street, zipcode, city, phone, email) VALUES ('$fullname', '$address', '$zipcode', '$city', '$phone', '$email')";
+    $sql = "INSERT INTO client (client_name, street, zipcode, city, phone, email) VALUES 
+    ('$fullname','$address','$zipcode','$city','$phone','$email')";
+    
     $client_id = executeInsert($db, $sql);
 
-    $query = $db->query ($sql);
+    $db->commit();
+    //$query = $db->query ($sql);
+
     header('HTTP/1.1 200 OK');
-    $data = array('id' => $client_id, 'client_name' => $fullname, 'street' => $street, 'zipcode' => $zipcode, 'city' => $city, 'phone' => $phone, 'email' => $email);
-    print json_encode($data);
+    $data = array('id' => $client_id);
+    echo json_encode($data);
 } catch (PDOException $pdoex) {
     $db->rollBack();
     returnError($pdoex);

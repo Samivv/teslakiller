@@ -42,27 +42,27 @@ function Client() {
         <Form onSubmit={Order}>
         <Form.Group className="mb-3">
           <Form.Label>Name</Form.Label>
-          <Form.Control type="text" onChange={e =>setFullname(e.target.value)} />
+          <Form.Control type="text" onChange={e => setFullname(e.target.value)} />
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>Streetaddress</Form.Label>
-          <Form.Control type="text" onChange={e =>setStreet(e.target.value)}/>
+          <Form.Control type="text" onChange={e => setStreet(e.target.value)}/>
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>Zipcode</Form.Label>
-          <Form.Control type="text" onChange={e =>setZipcode(e.target.value)}/>
+          <Form.Control type="text" onChange={e => setZipcode(e.target.value)}/>
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>City</Form.Label>
-          <Form.Control type="text" onChange={e =>setCity(e.target.value)}/>
+          <Form.Control type="text" onChange={e => setCity(e.target.value)}/>
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>Phone</Form.Label>
-          <Form.Control type="text" placeholder="0401234567" onChange={e =>setPhone(e.target.value)} />
+          <Form.Control type="text" placeholder="0401234567" onChange={e => setPhone(e.target.value)} />
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>Email</Form.Label>
-          <Form.Control type="text" placeholder="name@example.com" onChange={e =>setEmail(e.target.value)}/>
+          <Form.Control type="text" placeholder="name@example.com" onChange={e => setEmail(e.target.value)}/>
         </Form.Group>
         <Button variant="primary" type="submit">
           Order
