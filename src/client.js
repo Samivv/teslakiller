@@ -1,35 +1,31 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 import {Form, Button} from 'react-bootstrap';
-import { useState } from 'react';
 import axios from 'axios';
 
 function Client() {
-  const [fullname, setFullname] = useState();
-  const [street, setStreet] = useState();
-  const [zipcode, setZipcode] = useState();
-  const [city, setCity] = useState();
-  const [phone, setPhone] = useState();
-  const [email, setEmail] = useState();
 
-  function Order(e) {
+  const Order = (e) => {
     e.preventDefault();
 
     const url = 'http://localhost:3000/teslakiller/';
 
-    const json = JSON.stringify({
-      fullname: fullname,
-      street: street,
-      zipcode: zipcode,
-      city: city,
-      phone: phone,
-      email: email,
-    });
-    axios.post(url + 'order/client.php', json, {
+    const data = {
+      fullname: e.target.fullname.value,
+      street: e.target.street.value,
+      zipcode: e.target.zipcode.value,
+      city: e.target.city.value,
+      phone: e.target.phone.value,
+      email: e.target.email.value
+    }
+    axios.post(url + 'order/client.php', data, {
       headers: {
-        'Accept' : 'application/json',
-        'Content-Type' : 'application/json'
+        'Content-Type': 'Application/json',
+        'Access-Control-Allow-Origin' : '*',
+        'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS'
       }
+    }).then(res => {
+      console.log(res);
     }).catch(error => {
       alert(error);
     });
@@ -42,27 +38,27 @@ function Client() {
         <Form onSubmit={Order}>
         <Form.Group className="mb-3">
           <Form.Label>Name</Form.Label>
-          <Form.Control type="text" onChange={e => setFullname(e.target.value)} />
+          <Form.Control type="text" name="fullname"/>
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>Streetaddress</Form.Label>
-          <Form.Control type="text" onChange={e => setStreet(e.target.value)}/>
+          <Form.Control type="text" name="street"/>
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>Zipcode</Form.Label>
-          <Form.Control type="text" onChange={e => setZipcode(e.target.value)}/>
+          <Form.Control type="text" name="zipcode"/>
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>City</Form.Label>
-          <Form.Control type="text" onChange={e => setCity(e.target.value)}/>
+          <Form.Control type="text" name="city" />
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>Phone</Form.Label>
-          <Form.Control type="text" placeholder="0401234567" onChange={e => setPhone(e.target.value)} />
+          <Form.Control type="text" placeholder="0401234567" name="phone" />
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>Email</Form.Label>
-          <Form.Control type="text" placeholder="name@example.com" onChange={e => setEmail(e.target.value)}/>
+          <Form.Control type="text" placeholder="name@example.com" name="email"/>
         </Form.Group>
         <Button variant="primary" type="submit">
           Order

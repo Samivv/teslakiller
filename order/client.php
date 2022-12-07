@@ -15,20 +15,18 @@ $email = filter_var($input->$email, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
 try{
     $db = createSqliteConnection('../allset.db');
-    $db->beginTransaction();
 
     $sql = "INSERT INTO client (client_name, street, zipcode, city, phone, email) VALUES 
-    ('$fullname','$address','$zipcode','$city','$phone','$email')";
-    
+    ('$fullname','$street','$zipcode','$city','$phone','$email')";
+
     $client_id = executeInsert($db, $sql);
+    
+    $query = $db->query ($sql);
 
-    $db->commit();
-    //$query = $db->query ($sql);
-
+    $data = array('id' => $client_id, 'name' => $fullname, 'street' => $street, 'zipcode' => $zipcode, 'city' => $city, 'phone' => $phone, 'email' => $email);
     header('HTTP/1.1 200 OK');
-    $data = array('id' => $client_id);
-    echo json_encode($data);
+    print json_encode($data);
 } catch (PDOException $pdoex) {
-    $db->rollBack();
     returnError($pdoex);
 }
+?>
