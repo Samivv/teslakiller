@@ -5,19 +5,28 @@ import axios from 'axios';
 
 function Client() {
 
-  const Order = (e) => {
+  const order = (e) => {
     e.preventDefault();
 
     const url = 'http://localhost:3000/teslakiller/';
 
-    const data = {
+    let data = new FormData();
+    data.append('fullname', e.target.fullname.value)
+    data.append('street', e.target.street.value)
+    data.append('zipcode', e.target.zipcode.value)
+    data.append('city', e.target.city.value)
+    data.append('phone', e.target.phone.value)
+    data.append('email', e.target.email.value)
+
+   /* const data = {
       fullname: e.target.fullname.value,
       street: e.target.street.value,
       zipcode: e.target.zipcode.value,
       city: e.target.city.value,
       phone: e.target.phone.value,
       email: e.target.email.value
-    }
+    }*/
+    
     axios.post(url + 'order/client.php', data, {
       headers: {
         'Content-Type': 'Application/json',
@@ -35,7 +44,7 @@ function Client() {
         <>
         <h5>Plese enter your information:</h5>
         <div className="container">
-        <Form onSubmit={Order}>
+        <Form onSubmit={order}>
         <Form.Group className="mb-3">
           <Form.Label>Name</Form.Label>
           <Form.Control type="text" name="fullname"/>

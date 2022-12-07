@@ -13,11 +13,13 @@ $city = filter_var($input->$city, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 $phone = filter_var($input->$phone, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 $email = filter_var($input->$email, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
+print json_encode($input);
+
 try{
     $db = createSqliteConnection('../allset.db');
 
     $sql = "INSERT INTO client (client_name, street, zipcode, city, phone, email) VALUES 
-    ('$fullname','$street','$zipcode','$city','$phone','$email')";
+    ('$fullname','$street', $zipcode,'$city', $phone,'$email')";
 
     $client_id = executeInsert($db, $sql);
     
