@@ -10,30 +10,17 @@ function Client() {
 
     const url = 'http://localhost:3000/teslakiller/';
 
-    let data = new FormData();
-    data.append('fullname', e.target.fullname.value)
-    data.append('street', e.target.street.value)
-    data.append('zipcode', e.target.zipcode.value)
-    data.append('city', e.target.city.value)
-    data.append('phone', e.target.phone.value)
-    data.append('email', e.target.email.value)
-
-   /* const data = {
+    const data = {
       fullname: e.target.fullname.value,
       street: e.target.street.value,
       zipcode: e.target.zipcode.value,
       city: e.target.city.value,
       phone: e.target.phone.value,
       email: e.target.email.value
-    }*/
+    }
     
-    axios.post(url + 'order/client.php', data, {
-      headers: {
-        'Content-Type': 'Application/json',
-        'Access-Control-Allow-Origin' : '*',
-        'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS'
-      }
-    }).then(res => {
+    axios.post(url + 'order/client.php', data
+    ).then(res => {
       console.log(res);
     }).catch(error => {
       alert(error);
