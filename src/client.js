@@ -7,8 +7,8 @@ function Client() {
 
   const order = (e) => {
     e.preventDefault();
-
-    const url = 'http://localhost:3000/teslakiller/';
+   
+    const url = 'http://localhost:3000/';
 
     const data = {
       fullname: e.target.fullname.value,
@@ -18,10 +18,18 @@ function Client() {
       phone: e.target.phone.value,
       email: e.target.email.value
     }
+
+    /*const config = {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "HEAD,GET,PUT,POST,DELETE,PATCH,OPTIONS"
+      }
+    };*/
     
     axios.post(url + 'order/client.php', data
     ).then(res => {
       console.log(res);
+      console.log('testitesti')
     }).catch(error => {
       alert(error);
     });

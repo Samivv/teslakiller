@@ -1,8 +1,6 @@
 <?php
-require '../inc/functions.php';
-require '../inc/headers.php';
-
-// Asiakkaan lisääminen tietokantaan Input-kentän kautta.
+require_once '../inc/functions.php';
+require_once '../inc/headers.php';
 
 $input = json_decode(file_get_contents('php://input'));
 
@@ -22,7 +20,7 @@ try{
 
     $client_id = executeInsert($db, $sql);
     
-    $query = $db->query ($sql);
+   // $query = $db->query ($sql);
 
     $data = array('id' => $client_id, 'name' => $fullname, 'street' => $street, 'zipcode' => $zipcode, 'city' => $city, 'phone' => $phone, 'email' => $email);
     header('HTTP/1.1 200 OK');
