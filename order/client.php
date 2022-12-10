@@ -8,7 +8,7 @@ $fullname = filter_var($input->fullname, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 $street = filter_var($input->street, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 $zipcode = intval(filter_var($input->zipcode, FILTER_SANITIZE_FULL_SPECIAL_CHARS));
 $city = filter_var($input->city, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-$phone = intval(filter_var($input->phone, FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+$phone = filter_var($input->phone, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 $email = filter_var($input->email, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
 
@@ -16,7 +16,7 @@ try{
     $db = createSqliteConnection('../allset.db');
 
     $sql = "INSERT INTO client (client_name, street, zipcode, city, phone, email) VALUES 
-    ('$fullname','$street', $zipcode,'$city', $phone,'$email')";
+    ('$fullname','$street', $zipcode,'$city', '$phone','$email')";
 
     $client_id = executeInsert($db, $sql);
     

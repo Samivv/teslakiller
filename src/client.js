@@ -29,7 +29,7 @@ function Client() {
     axios.post(url + 'order/client.php', data
     ).then(res => {
       console.log(res);
-      console.log('testitesti')
+      alert('Thank you');
     }).catch(error => {
       alert(error);
     });
@@ -65,7 +65,7 @@ function Client() {
           <Form.Control type="text" placeholder="name@example.com" name="email"/>
         </Form.Group>
         <Button variant="primary" type="submit">
-          Order
+          Submit
         </Button>
       </Form>
         </div>
