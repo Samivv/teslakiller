@@ -4,13 +4,24 @@ import './media/fonts/TESLA.ttf';
 import AllsetNavbar from './navbarAllset.js';
 import AdminPanel from './admin';
 import Client from './client';
+import React, {useState} from 'react';
 
-function App() {
+export function App() {
+
+  const [model, setModel] = useState("");
+  const [color, setColor] = useState("");
+  const [interior, setInterior] = useState("");
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+  }
+
   return (
     <>
     <AllsetNavbar/>
     <section className="intro" id="home">
-      <h1>This is<span className="font-face"> Teslakiller </span></h1>
+      <h1><span className="font-face"> ALLSET </span></h1>
       <div className="logo">
       </div>
       <div className="arrow"></div>
@@ -18,25 +29,25 @@ function App() {
 
     <section className="intro2">
       <h2><span className="font-face"> Build your car </span></h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label for="model">Choose a model:</label>
-        <select name="model" id="model">
+        <select value={model} onChange={e => setModel(e.target.value)} name="model" id="model">
           <option value="basic">Basic model</option>
           <option value="sport">Super fast</option>
           <option value="offroad">Off-road</option>
         </select>
 
         <label for="color">Choose a color:</label>
-        <select name="color" id="color">
+        <select value={color} onChange={e => setColor(e.target.value)} name="color" id="color">
           <option value="white">White</option>
           <option value="black">Black</option>
           <option value="red">Red</option>
         </select>
 
-        <label for="color">Choose a interior:</label>
-        <select name="interior" id="interior">
-          <option value="bleather">Black leather</option>
-          <option value="lleather">White leather</option>
+        <label for="interior">Choose a interior:</label>
+        <select value={interior} onChange={e => setInterior(e.target.value)} name="interior" id="interior">
+          <option value="blackleather">Black leather</option>
+          <option value="whiteleather">White leather</option>
           <option value="textile">Premium fabric</option>
         </select>
         <button className="button">Order</button>
