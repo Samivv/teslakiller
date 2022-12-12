@@ -34,13 +34,13 @@ return (
     <h3 className="header">Your cart:</h3>
       <table className="table">
         <tbody>
-          {cart.map(product => {
-            sum+=parseFloat(product.product_price);
+          {cart.map(data => {
+            sum+=parseFloat(data.product_price);
             return (
               <tr key={uuid()}>
-                <td>{product.product_name}</td>
-                <td>{product.product_price} €</td>
-                <td><a href="#" onClick={() => removeFromCart(product)}>Delete product</a></td>
+                <td>{data.product_name}</td>
+                <td>{data.product_price} €</td>
+                <td><a href="#" onClick={() => removeFromCart(data)}>Delete product</a></td>
               </tr>
             )
             })}
