@@ -43,27 +43,24 @@ email VARCHAR(50)
 
 insert into client (client_name, street, zipcode, city, phone, email) values ('Testi Tenho', 'Testikuja 1 A2', 20000, 'Testitown', '0412345678', 'testi.testi@testi.testi');
 
-
-CREATE TABLE orders
-(order_id INTEGER PRIMARY KEY, 
-product_id INTEGER, 
-order_date DATE, 
-order_price DECIMAL(10, 2), 
-    FOREIGN KEY (product_id) REFERENCES product (product_id)
-); 
-
- 
-CREATE TABLE order_row
-(row_id INTEGER PRIMARY KEY,
-order_id INTEGER, 
+CREATE TABLE orders 
+(order_id INTEGER PRIMARY KEY,
 client_id INTEGER, 
-    FOREIGN KEY (order_id) REFERENCES orders (order_id), 
     FOREIGN KEY (client_id) REFERENCES client (client_id) 
 ); 
 
-insert into orders (product_id, order_date) values (3, '2022-11-28');
+CREATE TABLE order_row 
+(order_id INTEGER, 
+product_id INTEGER, 
+order_date DATE, 
+order_price DECIMAL (10, 2), 
+    FOREIGN KEY (order_id) REFERENCES order_row (order_id),
+    FOREIGN KEY (product_id) REFERENCES product (product_id)
+); 
 
-insert into order_row (order_id, client_id) values (1, 1);
+insert into orders (order_id, client_id) values (3, 1);
+
+insert into order_row (order_id, product_id, order_date, order_price) values (1, 1, '2022-11-28', 3000);
 
 
 CREATE TABLE user_info

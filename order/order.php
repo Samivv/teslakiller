@@ -1,50 +1,40 @@
 <?php
+require_once '../inc/functions.php';
+require_once '../inc/headers.php';
 
-// Tämä koodi on vaan kopio kurssin moodlesta.
+$input = json_decode(file_get_contents('php://input'));
 
-require '../inc/functions.php';
-require '../inc/headers.php';
-$name = filter_var($input->name, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-$address = filter_var($input->address, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-$zipcode = filter_var($input->zipcode, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+$fullname = filter_var($input->fullname, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+$street = filter_var($input->street, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+$zipcode = intval(filter_var($input->zipcode, FILTER_SANITIZE_FULL_SPECIAL_CHARS));
 $city = filter_var($input->city, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 $phone = filter_var($input->phone, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 $email = filter_var($input->email, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-$shoppingcart = $input->shoppingcart;
-try {
+$cart = $input->cart;
+
+try{
     $db = createSqliteConnection('../allset.db');
-    $db->beginTransaction();
-    //Asiakastietojen vieminen tauluun
-    $sql = "insert into client (client_name, address, zipcode, city, phone, email) values 
-    ('" .
-        filter_var($name,FILTER_SANITIZE_FULL_SPECIAL_CHARS) . "','" .
-        filter_var($address, FILTER_SANITIZE_FULL_SPECIAL_CHARS) . "','" .
-        filter_var($zipcode, FILTER_SANITIZE_FULL_SPECIAL_CHARS) . "','" .
-        filter_var($city, FILTER_SANITIZE_FULL_SPECIAL_CHARS) . "','" .
-        filter_var($phone, FILTER_SANITIZE_FULL_SPECIAL_CHARS) . "','" .
-        filter_var($email, FILTER_SANITIZE_FULL_SPECIAL_CHARS) 
-        . "')";
+
+    //Asiakkaan lisäys
+    $sql = "INSERT INTO client (client_name, street, zipcode, city, phone, email) VALUES 
+    ('$fullname','$street', $zipcode, '$city', '$phone','$email')";
     $client_id = executeInsert($db, $sql);
-    $date = date('y-m-d');
     
-    //Tilaustietojen vieminen tauluun
-    $sql = "insert into orders (client_id, order_date) values ($client_id, $date)";
+    // Tilauksen lisäys tietokantaan
+    $sql = "INSERT INTO orders (client_id) VALUES ($client_id)";
     $order_id = executeInsert($db, $sql);
-    // Tilausrivien looppaaminen
-    foreach ($shoppingcart as $product) {
-        $sql = "insert into order_row (order_id, product_id) values ("
-        . 
-        $order_id . "," . 
-        $product->product_id 
-        . ")";
+
+    // Tilauksen tietojen ja tuotteiden lisäys
+    $date = date('Y-m-d');
+    foreach ($cart as $product) {
+        $sql = "INSERT INTO order_row (order_id, product_id, order_date) VALUES ('
+        $order_id', '$product->product_id', '$date')";
         executeInsert($db, $sql);
     }
-    $db->commit();
+
     header('HTTP/1.1 200 OK');
-    $data = array('id' => $client_id);
-    echo json_encode($data); 
-}
-catch (PDOException $pdoex) {
-    $db->rollBack();
+    $data = array('id' => $client_id, 'name' => $fullname, 'street' => $street, 'zipcode' => $zipcode, 'city' => $city, 'phone' => $phone, 'email' => $email);
+    print json_encode($data);
+} catch (PDOException $pdoex) {
     returnError($pdoex);
 }
