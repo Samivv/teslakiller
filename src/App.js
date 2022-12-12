@@ -3,9 +3,9 @@ import './style.css';
 import './media/fonts/TESLA.ttf';
 import AllsetNavbar from './navbarAllset.js';
 import AdminPanel from './admin';
-//import Client from './client';
-import React, {useState, useEffect} from 'react';
-import Cart from './cart';
+import Client from './client';
+import React, {useEffect, useState} from 'react';
+import axios from 'axios';
 
 export function App() {
   const [cart, setCart] = useState([]);
@@ -30,11 +30,59 @@ export function App() {
     setCart(itemsWithoutRemoved);
     localStorage.setItem('cart',JSON.stringify(itemsWithoutRemoved));
   }
+  const [interiors, setInteriors] = useState([]);
+  const [models, setModels] = useState([]);
+  const [colors, setColors] = useState([]);
 
+
+  useEffect(() => {
+    getModelNames();
+    getColors();
+    getInteriors();
+  }, []);
+  
   function handleSubmit(e) {
     e.preventDefault();
 
   }
+
+  function getModelNames() {
+    const url = "http://localhost:3000/products/getproducts.php";
+    axios.get(url)
+    .then(res => {
+      const modelNames = res.data.map(product => product.product_name);
+      setModels(modelNames);
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+
+  function getColors() {
+    const url = "http://localhost:3000/products/getcolors.php";
+    axios.get(url)
+    .then(res => {
+      const colorNames = res.data.map(product => product.product_name);
+      setColors(colorNames);
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+
+  function getInteriors() {
+    const url = "http://localhost:3000/products/getinteriors.php";
+    axios.get(url)
+    .then(res => {
+      const interiorNames = res.data.map(product => product.product_name);
+      setInteriors(interiorNames);
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+
+      
 
   return (
     <>
@@ -45,29 +93,30 @@ export function App() {
       </div>
       <div className="arrow"></div>
     </section>
-
     <section className="intro2">
       <h2><span className="font-face"> Build your car </span></h2>
       <form onSubmit={handleSubmit}>
         <label for="model">Choose a model:</label>
         <select value={model} onChange={e => setModel(e.target.value)} name="model" id="model">
-          <option value="basic">Basic model</option>
-          <option value="sport">Super fast</option>
-          <option value="offroad">Off-road</option>
+          {models.map((model, index) => {
+            return <option key={index} value={model}>{model}</option>
+          })}
         </select>
 
         <label for="color">Choose a color:</label>
         <select value={color} onChange={e => setColor(e.target.value)} name="color" id="color">
-          <option value="white">White</option>
-          <option value="black">Black</option>
-          <option value="red">Red</option>
+          {colors.map((color, index) => {
+            return <option key={index} value={color}>{color}</option>
+            })}
+
         </select>
 
         <label for="interior">Choose a interior:</label>
         <select value={interior} onChange={e => setInterior(e.target.value)} name="interior" id="interior">
-          <option value="blackleather">Black leather</option>
-          <option value="whiteleather">White leather</option>
-          <option value="textile">Premium fabric</option>
+            {interiors.map((interior, index) => {
+              return <option key={index} value={interior}>{interior}</option>
+            })
+            }
         </select>
         <button className="button">Order</button>
       </form>
