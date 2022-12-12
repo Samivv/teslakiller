@@ -51,8 +51,7 @@ return (
           </tr>
         </tbody>
       </table>
-      {cart.length > 0 &&
-    <>
+<>
       <h5>Please insert your information!</h5>
       <div className="container">
           <form onSubmit={order}>
@@ -80,13 +79,12 @@ return (
               <label>Email: </label>
               <input type="text" placeholder="name@example.com" name="email"/>
           </div>
-          <button variant="primary" type="submit">
-              Order
-          </button>
+          <button variant="primary" type="submit">Order</button>
         </form>
       </div>
-    </>
-  }
+      </>
     </>
 )
-} export default Cart;
+} 
+
+export default Cart;
