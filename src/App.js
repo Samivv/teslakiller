@@ -119,7 +119,7 @@ export function App() {
             })
             }
         </select>
-        <button className="button">Order</button>
+        <button className="button" onClick={addToCart} >Order</button>
       </form>
     </section>
 
