@@ -3,7 +3,8 @@ import './style.css';
 import './media/fonts/TESLA.ttf';
 import AllsetNavbar from './navbarAllset.js';
 import AdminPanel from './admin';
-import Client from './client';
+//import Client from './client';
+import Cart from './cart';
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 
