@@ -44,8 +44,8 @@ function AllsetNavbar() {
                 }
             </Nav>
             <Nav className="ml-auto">
-                <Nav.Link href="#basic">Cart</Nav.Link>
-                <Nav.Link href="#client">Account</Nav.Link>
+                <Nav.Link href="#cart">Tämä ei toimi?</Nav.Link>
+                <Nav.Link href="#client">Cart</Nav.Link>
                 <Nav.Link href="#admin">Menu</Nav.Link>
             </Nav>
         </Navbar.Collapse>

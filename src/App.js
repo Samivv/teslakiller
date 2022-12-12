@@ -3,15 +3,34 @@ import './style.css';
 import './media/fonts/TESLA.ttf';
 import AllsetNavbar from './navbarAllset.js';
 import AdminPanel from './admin';
-import Client from './client';
+//import Client from './client';
+import Cart from './cart';
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 
 export function App() {
-
+  const [cart, setCart] = useState([]);
   const [model, setModel] = useState("");
   const [color, setColor] = useState("");
   const [interior, setInterior] = useState("");
+
+  useEffect(() => {
+    if ('cart' in localStorage) {
+      setCart(JSON.parse(localStorage.getItem('cart')));
+    }
+   }, [])
+
+  function addToCart(product) {
+    const newCart = [...cart,product];
+    setCart(newCart);
+    localStorage.setItem('cart',JSON.stringify(newCart));
+  }
+
+  function removeFromCart(product) {
+    const itemsWithoutRemoved = cart.filter(item => item.product_id !== product.product_id);
+    setCart(itemsWithoutRemoved);
+    localStorage.setItem('cart',JSON.stringify(itemsWithoutRemoved));
+  }
   const [interiors, setInteriors] = useState([]);
   const [models, setModels] = useState([]);
   const [colors, setColors] = useState([]);
@@ -119,7 +138,7 @@ export function App() {
     <AdminPanel/>
     </section>
     <section className="client" id="client">
-    <Client/>
+    <Cart cart={cart} removeFromCart={removeFromCart}/>
     </section>
     </>
 
