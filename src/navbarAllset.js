@@ -2,9 +2,26 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 import './media/fonts/TESLA.ttf';
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
+import { useState } from 'react';
+import axios from 'axios';
 
 
 function AllsetNavbar() {
+    const [models1, setModels1] = useState([]);
+    useState(() => {
+        getModelNames();
+        }, []);
+    function getModelNames() {
+        const url = "http://localhost:3000/products/getproducts.php";
+        axios.get(url)
+        .then(res => {
+          const modelNames = res.data.map(product => product.product_name);
+          setModels1(modelNames);
+        })
+        .catch(err => {
+          console.log(err);
+        })
+      }
     return (
     <>
     {/* sticky navbar with logo on the left side. Middle of the page has "Basic","Sport" and "Superfast", right side has Log in button */}
@@ -19,9 +36,12 @@ function AllsetNavbar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mx-auto">
-                <Nav.Link href="#basic"><span className="font-face">Basic model</span></Nav.Link>
-                <Nav.Link href="#sport"><span className="font-face">Superfast</span></Nav.Link>
-                <Nav.Link href="#truck"><span className="font-face">Off-road</span></Nav.Link>
+                {models1.map((model, index) => {
+                    return (
+                        <Nav.Link key={index} href={`#${model.toString().toLowerCase()}`}>{model}</Nav.Link>
+                    )
+                })
+                }
             </Nav>
             <Nav className="ml-auto">
                 <Nav.Link href="#basic">Cart</Nav.Link>
