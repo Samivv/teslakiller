@@ -16,15 +16,28 @@ export function App() {
   const [interiors, setInteriors] = useState([]);
   const [models, setModels] = useState([]);
   const [colors, setColors] = useState([]);
+  const [interiors, setInteriors] = useState([]);
+  const [models, setModels] = useState([]);
+  const [colors, setColors] = useState([]);
   
+  //localStorage.clear();
   useEffect(() => {
     if ('cart' in localStorage) {
+      console.log(localStorage.getItem('cart'));
       setCart(JSON.parse(localStorage.getItem('cart')));
     }
    }, [])
 
-  function addToCart(product) {
-    const newCart = [...cart,product];
+  function addToCart(e) {
+    e.preventDefault();
+
+    const data = {
+      model: e.target.model.value,
+      color: e.target.color.value,
+      interior: e.target.interior.value,
+    }
+    console.log(data);
+    const newCart = [...cart, data];
     setCart(newCart);
     localStorage.setItem('cart',JSON.stringify(newCart));
   }
@@ -43,10 +56,10 @@ export function App() {
     getInteriors();
   }, []);
   
-  function handleSubmit(e) {
+  /*function handleSubmit(e) {
     e.preventDefault();
 
-  }
+  }*/
 
   function getModelNames() {
     const url = "http://localhost:3000/products/getproducts.php";
@@ -97,7 +110,7 @@ export function App() {
     </section>
     <section className="intro2">
       <h2><span className="font-face"> Build your car </span></h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={addToCart}>
         <label for="model">Choose a model:</label>
         <select value={model} onChange={e => setModel(e.target.value)} name="model" id="model">
           {models.map((model, index) => {
@@ -120,7 +133,7 @@ export function App() {
             })
             }
         </select>
-        <button className="button" onClick={addToCart} >Order</button>
+        <button className="button" type= "submit">Order</button>
       </form>
     </section>
 
