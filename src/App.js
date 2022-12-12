@@ -13,7 +13,10 @@ export function App() {
   const [model, setModel] = useState("");
   const [color, setColor] = useState("");
   const [interior, setInterior] = useState("");
-
+  const [interiors, setInteriors] = useState([]);
+  const [models, setModels] = useState([]);
+  const [colors, setColors] = useState([]);
+  
   useEffect(() => {
     if ('cart' in localStorage) {
       setCart(JSON.parse(localStorage.getItem('cart')));
@@ -31,9 +34,7 @@ export function App() {
     setCart(itemsWithoutRemoved);
     localStorage.setItem('cart',JSON.stringify(itemsWithoutRemoved));
   }
-  const [interiors, setInteriors] = useState([]);
-  const [models, setModels] = useState([]);
-  const [colors, setColors] = useState([]);
+
 
 
   useEffect(() => {
