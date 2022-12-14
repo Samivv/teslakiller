@@ -10,40 +10,12 @@ import axios from 'axios';
 
 export function App() {
   const [cart, setCart] = useState([]);
-  const [model, setModel] = useState("");
-  const [color, setColor] = useState("");
-  const [interior, setInterior] = useState("");
+  const [model, setModel] = useState('');
+  const [color, setColor] = useState('');
+  const [interior, setInterior] = useState('');
   const [interiors, setInteriors] = useState([]);
   const [models, setModels] = useState([]);
   const [colors, setColors] = useState([]);
-
-  //localStorage.clear();
-  useEffect(() => {
-    if ('cart' in localStorage) {
-      console.log(localStorage.getItem('cart'));
-      setCart(JSON.parse(localStorage.getItem('cart')));
-    }
-   }, [])
-
-  function addToCart(e) {
-    e.preventDefault();
-
-    const data = {
-      model: e.target.model.value,
-      color: e.target.color.value,
-      interior: e.target.interior.value,
-    }
-    console.log(data);
-    const newCart = [...cart, data];
-    setCart(newCart);
-    localStorage.setItem('cart',JSON.stringify(newCart));
-  }
-
-  function removeFromCart(product) {
-    const itemsWithoutRemoved = cart.filter(item => item.product_id !== product.product_id);
-    setCart(itemsWithoutRemoved);
-    localStorage.setItem('cart',JSON.stringify(itemsWithoutRemoved));
-  }
 
   useEffect(() => {
     getModelNames();
@@ -60,7 +32,7 @@ export function App() {
     const url = "http://localhost:3000/products/getproducts.php";
     axios.get(url)
     .then(res => {
-      const modelNames = res.data.map(product => product.product_name);
+      const modelNames = res.data;
       setModels(modelNames);
     })
     .catch(err => {
@@ -72,7 +44,7 @@ export function App() {
     const url = "http://localhost:3000/products/getcolors.php";
     axios.get(url)
     .then(res => {
-      const colorNames = res.data.map(product => product.product_name);
+      const colorNames = res.data;
       setColors(colorNames);
     })
     .catch(err => {
@@ -84,7 +56,7 @@ export function App() {
     const url = "http://localhost:3000/products/getinteriors.php";
     axios.get(url)
     .then(res => {
-      const interiorNames = res.data.map(product => product.product_name);
+      const interiorNames = res.data;
       setInteriors(interiorNames);
     })
     .catch(err => {
@@ -92,7 +64,32 @@ export function App() {
     })
   }
 
-      
+  localStorage.clear();
+  useEffect(() => {
+    if ('cart' in localStorage) {
+      setCart(JSON.parse(localStorage.getItem('cart')));
+    }
+   }, [])
+
+  function addToCart(e) {
+    e.preventDefault();
+    const data = {
+      model: e.target.model.value,
+      color: e.target.color.value,
+      interior: e.target.interior.value,
+    }
+    console.log(data);
+
+    const newCart = [...cart, data];
+    setCart(newCart);
+    localStorage.setItem('cart', (newCart));
+  }
+
+  function removeFromCart(data) {
+    const itemsWithoutRemoved = cart.filter(item => item.data !== data.product_id);
+    setCart(itemsWithoutRemoved);
+    localStorage.setItem('cart',JSON.stringify(itemsWithoutRemoved));
+  }    
 
   return (
     <>
@@ -108,23 +105,23 @@ export function App() {
       <form onSubmit={addToCart}>
         <label for="model">Choose a model:</label>
         <select value={model} onChange={e => setModel(e.target.value)} name="model" id="model">
-          {models.map((model, index) => {
-            return <option key={index} value={model}>{model}</option>
+          {models.map(model => {
+            return <option key={model.product_id}>{model.product_name}</option>
           })}
         </select>
 
         <label for="color">Choose a color:</label>
         <select value={color} onChange={e => setColor(e.target.value)} name="color" id="color">
-          {colors.map((color, index) => {
-            return <option key={index} value={color}>{color}</option>
+          {colors.map(color => {
+            return <option key={color.product_id}>{color.product_name}</option>
             })}
 
         </select>
 
         <label for="interior">Choose a interior:</label>
         <select value={interior} onChange={e => setInterior(e.target.value)} name="interior" id="interior">
-            {interiors.map((interior, index) => {
-              return <option key={index} value={interior}>{interior}</option>
+            {interiors.map(interior => {
+              return <option key={interior.product_id}>{interior.product_name}</option>
             })
             }
         </select>
