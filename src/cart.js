@@ -3,7 +3,7 @@ import uuid from 'react-uuid'; // HOX ASENNA!
 import axios from 'axios';
 
 function Cart({cart, removeFromCart}) {
-    //let sum = 0;
+    let sum = 0;
 
     const order = (e) => {
         e.preventDefault();
@@ -36,11 +36,16 @@ return (
         <tbody>
           {cart.map(data => {
             console.log(data);
-            //sum+=parseFloat(data.product_price);
+            sum+=parseFloat(data.product_price);
             return (
               <tr key={uuid()}>
-                <td>{data.product_name}</td>
-                <td><a href="#" onClick={() => removeFromCart(data)}>Delete product</a></td>
+                <td>{data.color.product_name}</td>
+                <td>{data.color.product_price} €</td>
+                <td>{data.model.product_name}</td>
+                <td>{data.model.product_price} €</td>
+                <td>{data.interior.product_name}</td>
+                <td>{data.interior.product_price} €</td>
+                <td><a href="#" onClick={() => removeFromCart(data)}>Empty Cart</a></td>
               </tr>
             )
             })}

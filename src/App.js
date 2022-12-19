@@ -73,16 +73,33 @@ export function App() {
 
   function addToCart(e) {
     e.preventDefault();
+    
+    console.log(models);
+    const selectedModel = models.find(element => {
+      return element.product_name === e.target.model.value;
+    });
+
+    console.log(selectedModel);
+
+    const selectedColor = colors.find(element => {
+      return element.product_name === e.target.color.value;
+    });
+    console.log(selectedColor);
+
+    const selectedInterior = interiors.find(element => {
+      return element.product_name === e.target.interior.value;
+    });
+    console.log(selectedInterior);
+
     const data = {
-      model: e.target.model.value,
-      color: e.target.color.value,
-      interior: e.target.interior.value,
+      model: selectedModel,
+      color: selectedColor,
+      interior: selectedInterior
     }
-    console.log(data);
 
     const newCart = [...cart, data];
     setCart(newCart);
-    localStorage.setItem('cart', (newCart));
+    localStorage.setItem('cart', JSON.stringify(newCart));
   }
 
   function removeFromCart(data) {
