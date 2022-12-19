@@ -7,6 +7,7 @@ function Cart({cart, removeFromCart}) {
     let sum = 0;
 
     const order = (e) => {
+        console.log(cart)
         e.preventDefault();
        
         const url = 'http://localhost:3000/';

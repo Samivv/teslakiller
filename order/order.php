@@ -13,6 +13,7 @@ $email = filter_var($input->email, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 $cart = $input->cart;
 
 
+
 try{
     $db = createSqliteConnection('../allset.db');
 
@@ -29,8 +30,21 @@ try{
     $date = date('Y-m-d');
 
     foreach ($cart as $product) {
-        $sql = "INSERT INTO order_row (order_id, product_id, order_date) VALUES ('
-        $order_id', '$product->product_id', '$date')";
+        $model = $product->model;
+        $color = $product->color;
+        $interior = $product->interior;
+        $price = intval($model->price) + intval($color->price) + intval($interior->price);
+        print_r($price);
+        // Tämä ei toimi
+        
+        $sql = "INSERT INTO order_row (order_id, product_id, order_date,order_price) VALUES ('
+        $order_id', '".$model->product_id."', '$date','$price')";
+        executeInsert($db, $sql);
+        $sql = "INSERT INTO order_row (order_id, product_id, order_date,order_price) VALUES ('
+        $order_id', '".$color->product_id."', '$date','$price')";
+        executeInsert($db, $sql);
+        $sql = "INSERT INTO order_row (order_id, product_id, order_date,order_price) VALUES ('
+        $order_id', '".$interior->product_id."', '$date','$price')";
         executeInsert($db, $sql);
     }
 
