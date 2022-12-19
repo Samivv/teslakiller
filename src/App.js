@@ -16,6 +16,35 @@ export function App() {
   const [interiors, setInteriors] = useState([]);
   const [models, setModels] = useState([]);
   const [colors, setColors] = useState([]);
+  
+  //localStorage.clear();
+  useEffect(() => {
+    if ('cart' in localStorage) {
+      console.log(localStorage.getItem('cart'));
+      setCart(JSON.parse(localStorage.getItem('cart')));
+    }
+   }, [])
+
+  function addToCart(e) {
+    e.preventDefault();
+
+    const data = {
+      model: e.target.model.value,
+      color: e.target.color.value,
+      interior: e.target.interior.value,
+    }
+    console.log(data);
+    const newCart = [...cart, data];
+    setCart(newCart);
+    localStorage.setItem('cart',JSON.stringify(newCart));
+  }
+
+  function removeFromCart(product) {
+    const itemsWithoutRemoved = cart.filter(item => item.product_id !== product.product_id);
+    setCart(itemsWithoutRemoved);
+    localStorage.setItem('cart',JSON.stringify(itemsWithoutRemoved));
+  }
+
 
   useEffect(() => {
     getModelNames();
@@ -46,6 +75,8 @@ export function App() {
     .then(res => {
       const colorNames = res.data;
       setColors(colorNames);
+      // find all data from the response
+    
     })
     .catch(err => {
       console.log(err);

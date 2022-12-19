@@ -1,6 +1,7 @@
 import React from 'react';
 import uuid from 'react-uuid'; // HOX ASENNA!
 import axios from 'axios';
+import { Form, Button } from 'react-bootstrap';
 
 function Cart({cart, removeFromCart}) {
     let sum = 0;
@@ -31,6 +32,7 @@ function Cart({cart, removeFromCart}) {
 
 return (
     <>
+    <div className='container'>
     <h3 className="header">Your cart:</h3>
       <table className="table">
         <tbody>
@@ -52,37 +54,38 @@ return (
 
         </tbody>
       </table>
-<>
-      <h5>Please insert your information!</h5>
-      <div className="container">
-          <form onSubmit={order}>
-          <div className="field">
-              <label>Fullname: </label>
-              <input type="text" name="fullname"/>
-          </div>
-          <div className="field">
-              <label>Streetaddress: </label>
-              <input type="text" name="street"/>
-          </div>
-          <div className="field">
-              <label>Zipcode: </label>
-              <input type="text" name="zipcode"/>
-          </div>
-            <div className="field">
-              <label>City: </label>
-              <input type="text" name="city" />
-          </div>
-          <div className="field">
-              <label>Phonenumber: </label>
-              <input type="text" placeholder="0401234567" name="phone" />
-          </div>
-          <div className="field">
-              <label>Email: </label>
-              <input type="text" placeholder="name@example.com" name="email"/>
-          </div>
-          <button variant="primary" type="submit">Order</button>
-        </form>
       </div>
+<>
+        <div className="container">
+      <h5>Please insert your information!</h5>
+        <Form onSubmit={order}>
+        <Form.Group>
+        <Form.Label>Fullname:</Form.Label>
+        <Form.Control type="text" name="fullname" />
+        </Form.Group>
+        <Form.Group>
+        <Form.Label>Streetaddress:</Form.Label>
+        <Form.Control type="text" name="street" />
+        </Form.Group>
+        <Form.Group>
+        <Form.Label>Zipcode:</Form.Label>
+        <Form.Control type="text" name="zipcode" />
+        </Form.Group>
+        <Form.Group>
+        <Form.Label>City:</Form.Label>
+        <Form.Control type="text" name="city" />
+        </Form.Group>
+        <Form.Group>
+        <Form.Label>Phonenumber:</Form.Label>
+        <Form.Control type="text" placeholder="0401234567" name="phone" />
+        </Form.Group>
+        <Form.Group>
+        <Form.Label>Email:</Form.Label>
+        <Form.Control type="text" placeholder="name@example.com" name="email" />
+        </Form.Group>
+        <Button variant="primary" type="submit">Order</Button>
+        </Form>
+        </div>
       </>
     </>
 )
