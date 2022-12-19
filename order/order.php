@@ -12,6 +12,7 @@ $phone = filter_var($input->phone, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 $email = filter_var($input->email, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 $cart = $input->cart;
 
+
 try{
     $db = createSqliteConnection('../allset.db');
 
@@ -26,6 +27,7 @@ try{
 
     // Tilauksen tietojen ja tuotteiden lisäys
     $date = date('Y-m-d');
+
     foreach ($cart as $product) {
         $sql = "INSERT INTO order_row (order_id, product_id, order_date) VALUES ('
         $order_id', '$product->product_id', '$date')";
