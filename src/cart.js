@@ -10,7 +10,7 @@ function Cart({cart, removeFromCart}) {
         e.preventDefault();
        
         const url = 'http://localhost:3000/';
-    
+
         const data = {
           fullname: e.target.fullname.value,
           street: e.target.street.value,
@@ -26,7 +26,7 @@ function Cart({cart, removeFromCart}) {
           console.log(res);
           alert('Kiitos tilauksestasi!');
         }).catch(error => {
-          alert(error.response === undefined ? error : error.response.data.error);
+          alert(error.res === undefined ? error : error.res.data.error);
         });
       }
 
