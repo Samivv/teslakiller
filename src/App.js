@@ -16,9 +16,6 @@ export function App() {
   const [interiors, setInteriors] = useState([]);
   const [models, setModels] = useState([]);
   const [colors, setColors] = useState([]);
-  const [interiors, setInteriors] = useState([]);
-  const [models, setModels] = useState([]);
-  const [colors, setColors] = useState([]);
   
   //localStorage.clear();
   useEffect(() => {
@@ -79,6 +76,8 @@ export function App() {
     .then(res => {
       const colorNames = res.data.map(product => product.product_name);
       setColors(colorNames);
+      // find all data from the response
+    
     })
     .catch(err => {
       console.log(err);
