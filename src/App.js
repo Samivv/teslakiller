@@ -16,7 +16,6 @@ export function App() {
   const [interiors, setInteriors] = useState([]);
   const [models, setModels] = useState([]);
   const [colors, setColors] = useState([]);
-<<<<<<< HEAD
   
   //localStorage.clear();
   useEffect(() => {
@@ -46,9 +45,6 @@ export function App() {
     localStorage.setItem('cart',JSON.stringify(itemsWithoutRemoved));
   }
 
-
-=======
->>>>>>> b387729cbcc7e35000fcd5658620759507c97786
 
   useEffect(() => {
     getModelNames();
