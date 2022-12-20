@@ -33,7 +33,7 @@ try{
         $model = $product->model;
         $color = $product->color;
         $interior = $product->interior;
-        $price = intval($model->price) + intval($color->price) + intval($interior->price);
+        $price = intval($model->product_price) + intval($color->product_price) + intval($interior->product_price);
         print_r($price);
         // Tämä ei toimi
         

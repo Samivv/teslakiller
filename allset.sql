@@ -17,7 +17,7 @@ insert into category (category_name) values ('Interior');
 CREATE TABLE product
 (product_id INTEGER PRIMARY KEY, 
 product_name VARCHAR(50) NOT NULL, 
-product_price DECIMAL(10,2), 
+product_price INTEGER, 
 category_id INTEGER, 
     FOREIGN KEY (category_id) REFERENCES category (category_id)
 ); 
@@ -53,7 +53,7 @@ CREATE TABLE order_row
 (order_id INTEGER, 
 product_id INTEGER, 
 order_date DATE, 
-order_price DECIMAL (10, 2), 
+order_price INTEGER, 
     FOREIGN KEY (order_id) REFERENCES order_row (order_id),
     FOREIGN KEY (product_id) REFERENCES product (product_id)
 ); 
