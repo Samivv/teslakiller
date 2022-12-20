@@ -48,6 +48,7 @@ try{
 
     header('HTTP/1.1 200 OK');
     $data = array('id' => $client_id, 'name' => $fullname, 'street' => $street, 'zipcode' => $zipcode, 'city' => $city, 'phone' => $phone, 'email' => $email);
+    print json_encode($data);
 } catch (PDOException $pdoex) {
     returnError($pdoex);
 }
