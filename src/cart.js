@@ -41,6 +41,8 @@ return (
             console.log(data);
             sum+=parseFloat(data.product_price);
             console.log(data.color.product_price);
+
+
             return (
               <tr key={uuid()}>
                 <td>{data.color.product_name}</td>
