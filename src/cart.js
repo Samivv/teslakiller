@@ -22,7 +22,6 @@ function Cart({cart, removeFromCart}) {
         }
         axios.post(url + 'order/order.php', data
         ).then(res => {
-          console.log(res);
           alert('Kiitos tilauksestasi!');
         }).catch(error => {
           alert(error.res === undefined ? error : error.res.data.error);

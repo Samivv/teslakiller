@@ -7,6 +7,7 @@ import AdminPanel from './admin';
 import Cart from './cart';
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
+import { Routes, Route } from "react-router-dom"
 
 export function App() {
   const [cart, setCart] = useState([]);
@@ -176,12 +177,12 @@ export function App() {
     <section className="intro3">
     <span className="font-face"> Everything you need </span>
     </section>
-    <section className="admin" id="admin">
-    <AdminPanel/>
-    </section>
     <section className="client" id="client">
     <Cart cart={cart} removeFromCart={removeFromCart}/>
     </section>
+    <Routes>
+      <Route path="/admin" element={<AdminPanel/>}/>
+    </Routes>
     </>
 
   );
