@@ -34,8 +34,6 @@ try{
         $color = $product->color;
         $interior = $product->interior;
         $price = intval($model->product_price) + intval($color->product_price) + intval($interior->product_price);
-        print_r($price);
-        // Tämä ei toimi
         
         $sql = "INSERT INTO order_row (order_id, product_id, order_date,order_price) VALUES ('
         $order_id', '".$model->product_id."', '$date','$price')";
@@ -50,7 +48,6 @@ try{
 
     header('HTTP/1.1 200 OK');
     $data = array('id' => $client_id, 'name' => $fullname, 'street' => $street, 'zipcode' => $zipcode, 'city' => $city, 'phone' => $phone, 'email' => $email);
-    print json_encode($data);
 } catch (PDOException $pdoex) {
     returnError($pdoex);
 }

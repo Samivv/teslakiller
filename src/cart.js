@@ -7,7 +7,6 @@ function Cart({cart, removeFromCart}) {
     let sum = 0;
 
     const order = (e) => {
-        console.log(cart)
         e.preventDefault();
        
         const url = 'http://localhost:3000/';
@@ -21,7 +20,6 @@ function Cart({cart, removeFromCart}) {
           email: e.target.email.value,
           cart: cart
         }
-        console.log(data);
         axios.post(url + 'order/order.php', data
         ).then(res => {
           console.log(res);

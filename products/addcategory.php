@@ -11,7 +11,6 @@ try {
     $query = $db->query ($sql);
     $data = array('id' => $db->lastInsertId(), 'name' => $name);
     header('HTTP/1.1 200 OK');
-    print json_encode($data);
 } catch (PDOException $pdoex) {
         returnError($pdoex);
 }

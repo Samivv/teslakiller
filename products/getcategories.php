@@ -8,7 +8,6 @@ try {
     $query = $db->query ($sql);
     $data = $query->fetchAll(PDO::FETCH_ASSOC);
     header('HTTP/1.1 200 OK');
-    print json_encode($data);
     
 } catch (PDOException $pdoex) {
         returnError($pdoex);
