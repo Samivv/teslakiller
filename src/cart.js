@@ -37,24 +37,28 @@ return (
     <h3 className="header">Your cart:</h3>
       <table className="table">
         <tbody>
-          {cart.map(data => {
-            console.log(data);
-            sum+=parseFloat(data.product_price);
-            console.log(data.color.product_price);
+        {cart.map(data => {
+          console.log(data);
+          sum += parseFloat(data.color.product_price) + parseFloat(data.model.product_price) + parseFloat(data.interior.product_price);
+          console.log(data.color.product_price);
 
+          return (
+            <tr key={uuid()}>
+              <td>{data.color.product_name}</td>
+              <td>{data.color.product_price} €</td>
+              <td>{data.model.product_name}</td>
+              <td>{data.model.product_price} €</td>
+              <td>{data.interior.product_name}</td>
+              <td>{data.interior.product_price} €</td>
+              <td><a href="#" onClick={() => removeFromCart(data)}>Empty Cart</a></td>
+            </tr>
+          )
+        })}
 
-            return (
-              <tr key={uuid()}>
-                <td>{data.color.product_name}</td>
-                <td>{data.color.product_price} €</td>
-                <td>{data.model.product_name}</td>
-                <td>{data.model.product_price} €</td>
-                <td>{data.interior.product_name}</td>
-                <td>{data.interior.product_price} €</td>
-                <td><a href="#" onClick={() => removeFromCart(data)}>Empty Cart</a></td>
-              </tr>
-            )
-            })}
+        <tr>
+          <td colSpan={6}>Total: {sum} €</td>
+        </tr>
+
 
         </tbody>
       </table>
