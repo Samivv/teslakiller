@@ -38,10 +38,8 @@ return (
       <table className="table">
         <tbody>
         {cart.map(data => {
-          console.log(data);
-          sum += parseFloat(data.color.product_price) + parseFloat(data.model.product_price) + parseFloat(data.interior.product_price);
-          console.log(data.color.product_price);
 
+          sum += parseFloat(data.color.product_price) + parseFloat(data.model.product_price) + parseFloat(data.interior.product_price);
           return (
             <tr key={uuid()}>
               <td>{data.color.product_name}</td>
