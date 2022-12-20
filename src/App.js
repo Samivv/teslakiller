@@ -58,7 +58,7 @@ export function App() {
   }*/
 
   function getModelNames() {
-    const url = "http://localhost:3000/products/getproducts.php";
+    const url = "http://localhost:3000/products/getmodels.php";
     axios.get(url)
     .then(res => {
       const modelNames = res.data;
