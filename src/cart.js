@@ -2,7 +2,7 @@ import React from 'react';
 import uuid from 'react-uuid'; // HOX ASENNA!
 import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
-
+import './style.css';
 function Cart({cart, removeFromCart}) {
     let sum = 0;
 
@@ -59,7 +59,7 @@ return (
       </table>
       </div>
 <>
-        <div className="container">
+        <div className="container asd">
       <h5>Please insert your information!</h5>
         <Form onSubmit={order}>
         <Form.Group>

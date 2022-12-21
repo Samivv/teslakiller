@@ -2,7 +2,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 import {Form, Button } from 'react-bootstrap';
 import { useState } from 'react';
-
 import axios from 'axios';
 
 function AdminPanel() {
@@ -34,6 +33,8 @@ function AdminPanel() {
 
     return (
         <>
+            <section className="asd2">
+
         <div className="container">
           <div className="row">
             <div className="col-md-6">
@@ -62,7 +63,7 @@ function AdminPanel() {
               </div>
               </div>
         </div>
-
+        </section>
 
         </>
     );

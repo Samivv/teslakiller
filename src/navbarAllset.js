@@ -4,7 +4,7 @@ import './media/fonts/TESLA.ttf';
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
 import { useState } from 'react';
 import axios from 'axios';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 function AllsetNavbar() {
     const [models1, setModels1] = useState([]);
@@ -44,6 +44,7 @@ function AllsetNavbar() {
                 }
             </Nav>
             <Nav className="ml-auto">
+                <Nav.Link href="/admin">Admin</Nav.Link>
                 <Nav.Link href="#client">Cart</Nav.Link>
             </Nav>
         </Navbar.Collapse>

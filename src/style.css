@@ -11,17 +11,16 @@
      url("./media/fonts/TESLA.ttf") format("truetype");
     }
     
-
 * {
     padding:0;
     margin:0;
-    /* scroll-behavior: smooth;
-    scroll-snap-type: y mandatory; */
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
     font-family: 'IBM Plex Sans Arabic', sans-serif;
 }
 
 section {
-    background-color: rgb(86, 110, 97);
+    background-color: rgb(255, 255, 255);
     height: 100vh;
     scroll-snap-align: start;
 }
@@ -134,7 +133,7 @@ select {
 }
 
 
-.logo {
+.logo{
         position: absolute;
         background-image: url("./media/truck-side.jpg");
         background-size: cover;
@@ -173,4 +172,24 @@ select {
     display:flex;
     justify-content: center;
     align-items:center;
+}
+
+#client {
+    /* background-color: black!important;
+    color: rgb(255, 255, 255)!important; */
+    background-image: url("./media/interiot.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.asd2 {
+    background-image: url("./media/sport-front.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color:rgb(0, 0, 0)!important;
+    font-size: 35px!important;
 }
